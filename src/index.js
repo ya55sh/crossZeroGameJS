@@ -23,6 +23,9 @@ for (let i = 0; i < td.length; i++) {
     console.log(td[i].textContent);
     if (playerState.player1.turn === true) {
       playerState.player1.p1arr[playerState.roundState - 1] = td[i].innerHTML;
+      td[i].classList.add("_" + td[i].innerHTML);
+      td[i].classList.add("p1");
+      td[i].classList.add("clicked");
       td[i].innerHTML = playerState.player1.sym;
       playerState.player1.turn = false;
       playerState.player2.turn = true;
@@ -30,6 +33,9 @@ for (let i = 0; i < td.length; i++) {
       console.log("p1 arr", playerState.player1.p1arr);
     } else {
       playerState.player2.p2arr[playerState.roundState - 1] = td[i].innerHTML;
+      td[i].classList.add("_" + td[i].innerHTML);
+      td[i].classList.add("p2");
+      td[i].classList.add("clicked");
       td[i].innerHTML = playerState.player2.sym;
       playerState.player2.turn = false;
       playerState.player1.turn = true;
@@ -40,12 +46,16 @@ for (let i = 0; i < td.length; i++) {
     if (playerState.roundState >= 3) {
       if (playerState.player1.p1arr.includes("00")) {
         if (playerState.player1.p1arr.includes("01")) {
-          if (playerState.player1.p1arr.includes("02"))
+          if (playerState.player1.p1arr.includes("02")) {
+            let x = document.getElementsByClassName("p1");
             playerState.player1.status = "win";
-        } else if (playerState.player1.p1arr.includes("10")) {
+          }
+        }
+        if (playerState.player1.p1arr.includes("10")) {
           if (playerState.player1.p1arr.includes("20"))
             playerState.player1.status = "win";
-        } else if (playerState.player1.p1arr.includes("11")) {
+        }
+        if (playerState.player1.p1arr.includes("11")) {
           if (playerState.player1.p1arr.includes("22"))
             playerState.player1.status = "win";
         }
@@ -62,7 +72,8 @@ for (let i = 0; i < td.length; i++) {
         if (playerState.player1.p1arr.includes("12")) {
           if (playerState.player1.p1arr.includes("22"))
             playerState.player1.status = "win";
-        } else if (playerState.player1.p1arr.includes("11")) {
+        }
+        if (playerState.player1.p1arr.includes("11")) {
           if (playerState.player1.p1arr.includes("20"))
             playerState.player1.status = "win";
         }
@@ -83,16 +94,18 @@ for (let i = 0; i < td.length; i++) {
       }
     }
 
-    if (playerState.player1.status == "win") console.log("p1 won");
+    if (playerState.player1.status === "win") console.log("p1 won");
 
     if (playerState.player2.p2arr.includes("00")) {
       if (playerState.player2.p2arr.includes("01")) {
         if (playerState.player2.p2arr.includes("02"))
           playerState.player2.status = "win";
-      } else if (playerState.player2.p2arr.includes("10")) {
+      }
+      if (playerState.player2.p2arr.includes("10")) {
         if (playerState.player2.p2arr.includes("20"))
           playerState.player2.status = "win";
-      } else if (playerState.player2.p2arr.includes("11")) {
+      }
+      if (playerState.player2.p2arr.includes("11")) {
         if (playerState.player2.p2arr.includes("22"))
           playerState.player2.status = "win";
       }
@@ -109,7 +122,8 @@ for (let i = 0; i < td.length; i++) {
       if (playerState.player2.p2arr.includes("12")) {
         if (playerState.player2.p2arr.includes("22"))
           playerState.player2.status = "win";
-      } else if (playerState.player2.p2arr.includes("11")) {
+      }
+      if (playerState.player2.p2arr.includes("11")) {
         if (playerState.player2.p2arr.includes("20"))
           playerState.player2.status = "win";
       }
@@ -129,6 +143,6 @@ for (let i = 0; i < td.length; i++) {
       }
     }
 
-    if (playerState.player2.status == "win") console.log("p2 won");
+    if (playerState.player2.status === "win") console.log("p2 won");
   });
 }
