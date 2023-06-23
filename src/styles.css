@@ -18,3 +18,8 @@ body {
   pointer-events: none;
   background: bisque;
 }
+
+.divTable {
+  display: flex;
+  justify-content: center;
+}

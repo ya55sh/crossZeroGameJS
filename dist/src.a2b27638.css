@@ -19,5 +19,10 @@ body {
   background: bisque;
 }
 
+.divTable {
+  display: flex;
+  justify-content: center;
+}
+
 
 /*# sourceMappingURL=/src.a2b27638.css.map */
