@@ -176,7 +176,6 @@ module.hot.accept(reloadCSS);
 "use strict";
 
 require("./styles.css");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 var playerState = {
   winArray: [],
   roundState: 1,
@@ -338,16 +337,16 @@ var _loop = function _loop(i) {
       }
     }
     if (playerState.player1.status === "win" || playerState.player2.status === "win") {
-      var cName = document.getElementsByClassName("clicked");
-      // console.log(cName[0].className);
+      var tableNames = document.querySelectorAll(".td");
       var totalBlocks = 0;
-      for (var _i = 0; _i < cName.length; _i++) {
-        var temp = cName[_i].className.substring(4, 6);
+      var tableArray = Array.from(tableNames);
+      tableArray.forEach(function (item) {
+        var temp = item.className.substring(4, 6);
         if (playerState.winArray.includes(temp)) totalBlocks++;
-      }
+        if (item.className.length <= 2) item.classList.add("clicked");
+      });
       if (totalBlocks === 3) {
         playerState.winArray.forEach(function (element) {
-          console.log(_typeof(element));
           document.getElementsByClassName("_" + element)[0].style.backgroundColor = "red";
         });
       }
@@ -384,7 +383,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35401" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36963" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

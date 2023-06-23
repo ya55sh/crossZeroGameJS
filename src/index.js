@@ -177,16 +177,17 @@ for (let i = 0; i < td.length; i++) {
       playerState.player1.status === "win" ||
       playerState.player2.status === "win"
     ) {
-      let cName = document.getElementsByClassName("clicked");
-      // console.log(cName[0].className);
+      let tableNames = document.querySelectorAll(".td")
       let totalBlocks = 0;
-      for (let i = 0; i < cName.length; i++) {
-        let temp = cName[i].className.substring(4, 6);
+      let tableArray = Array.from(tableNames)
+      tableArray.forEach(item=>{
+        let temp = item.className.substring(4, 6);
         if (playerState.winArray.includes(temp)) totalBlocks++;
-      }
+        if(item.className.length<=2) item.classList.add("clicked")      
+      })
+
       if (totalBlocks === 3) {
         playerState.winArray.forEach((element) => {
-          console.log(typeof element);
           document.getElementsByClassName(
             "_" + element
           )[0].style.backgroundColor = "red";
